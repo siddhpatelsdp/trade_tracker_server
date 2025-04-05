@@ -1,0 +1,74 @@
+[
+    {
+      "_id": 1,
+      "instrument": "NAS100",
+      "entry_price": 15320.50,
+      "exit_price": 15400.75,
+      "trade_date": "02/02/2025",
+      "profit_loss": 805.00,
+      "notes": "NY session breakout"
+    },
+    {
+      "_id": 2,
+      "instrument": "SPX500",
+      "entry_price": 4950.25,
+      "exit_price": 4960.50,
+      "trade_date": "02/03/2025",
+      "profit_loss": 102.50,
+      "notes": "Scalped FOMC move"
+    },
+    {
+      "_id": 3,
+      "instrument": "EUR/USD",
+      "entry_price": 1.0825,
+      "exit_price": 1.0850,
+      "trade_date": "02/04/2025",
+      "profit_loss": 250.00,
+      "notes": "London session reversal"
+    },
+    {
+      "_id": 4,
+      "instrument": "GBP/USD",
+      "entry_price": 1.2720,
+      "exit_price": 1.2685,
+      "trade_date": "02/05/2025",
+      "profit_loss": -350.00,
+      "notes": "Took a loss on CPI news"
+    },
+    {
+      "_id": 5,
+      "instrument": "XAU/USD",
+      "entry_price": 2030.00,
+      "exit_price": 2015.50,
+      "trade_date": "02/06/2025",
+      "profit_loss": -450.00,
+      "notes": "Gold short during NY session"
+    },
+    {
+      "_id": 6,
+      "instrument": "BTC/USD",
+      "entry_price": 42000.00,
+      "exit_price": 42500.00,
+      "trade_date": "02/07/2025",
+      "profit_loss": 500.00,
+      "notes": "Bitcoin breakout"
+    },
+    {
+      "_id": 7,
+      "instrument": "AAPL",
+      "entry_price": 180.00,
+      "exit_price": 185.00,
+      "trade_date": "02/08/2025",
+      "profit_loss": 500.00,
+      "notes": "Earnings play"
+    },
+    {
+      "_id": 8,
+      "instrument": "TSLA",
+      "entry_price": 800.00,
+      "exit_price": 810.00,
+      "trade_date": "02/09/2025",
+      "profit_loss": 1000.00,
+      "notes": "Elon Musk tweet"
+    }
+  ]
