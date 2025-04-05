@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    color: #0051ff;
+    text-align: center;
+  }
+  
+  .api-endpoints {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  .api-endpoints a {
+    color: #0051ff;
+    text-decoration: none;
+  }
+  
+  .api-endpoints a:hover {
+    text-decoration: underline;
+  }
