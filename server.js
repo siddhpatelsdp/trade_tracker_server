@@ -3,21 +3,34 @@ const cors = require('cors');
 const app = express();
 const path = require('path');
 
-// Middleware
+// Enhanced CORS configuration
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://siddhpatelsdp.github.io']
+  origin: ['http://localhost:3000', 'https://siddhpatelsdp.github.io'],
+  methods: ['GET', 'OPTIONS'],
+  allowedHeaders: ['Content-Type']
 }));
+
+// Handle preflight requests
+app.options('*', cors());
+
+// Static files
 app.use(express.static('public'));
 
-// Sample trade data (replace with your actual trade data)
+// Trade data
 const trades = require('./trades.json');
 
-// API Routes
+// API Route (with error handling)
 app.get('/api/trades', (req, res) => {
-  res.json(trades);
+  try {
+    res.setHeader('Cache-Control', 'no-store');
+    res.json(trades);
+  } catch (err) {
+    console.error('API Error:', err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
-// Serve index.html for root route
+// Serve docs
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
