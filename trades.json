@@ -1,74 +1,123 @@
 [
-    {
-      "_id": 1,
-      "instrument": "NAS100",
-      "entry_price": 15320.50,
-      "exit_price": 15400.75,
-      "trade_date": "02/02/2025",
-      "profit_loss": 805.00,
-      "notes": "NY session breakout"
-    },
-    {
-      "_id": 2,
-      "instrument": "SPX500",
-      "entry_price": 4950.25,
-      "exit_price": 4960.50,
-      "trade_date": "02/03/2025",
-      "profit_loss": 102.50,
-      "notes": "Scalped FOMC move"
-    },
-    {
-      "_id": 3,
-      "instrument": "EUR/USD",
-      "entry_price": 1.0825,
-      "exit_price": 1.0850,
-      "trade_date": "02/04/2025",
-      "profit_loss": 250.00,
-      "notes": "London session reversal"
-    },
-    {
-      "_id": 4,
-      "instrument": "GBP/USD",
-      "entry_price": 1.2720,
-      "exit_price": 1.2685,
-      "trade_date": "02/05/2025",
-      "profit_loss": -350.00,
-      "notes": "Took a loss on CPI news"
-    },
-    {
-      "_id": 5,
-      "instrument": "XAU/USD",
-      "entry_price": 2030.00,
-      "exit_price": 2015.50,
-      "trade_date": "02/06/2025",
-      "profit_loss": -450.00,
-      "notes": "Gold short during NY session"
-    },
-    {
-      "_id": 6,
-      "instrument": "BTC/USD",
-      "entry_price": 42000.00,
-      "exit_price": 42500.00,
-      "trade_date": "02/07/2025",
-      "profit_loss": 500.00,
-      "notes": "Bitcoin breakout"
-    },
-    {
-      "_id": 7,
-      "instrument": "AAPL",
-      "entry_price": 180.00,
-      "exit_price": 185.00,
-      "trade_date": "02/08/2025",
-      "profit_loss": 500.00,
-      "notes": "Earnings play"
-    },
-    {
-      "_id": 8,
-      "instrument": "TSLA",
-      "entry_price": 800.00,
-      "exit_price": 810.00,
-      "trade_date": "02/09/2025",
-      "profit_loss": 1000.00,
-      "notes": "Elon Musk tweet"
-    }
-  ]
+  {
+    "_id": "1744500350637",
+    "instrument": "NAS100",
+    "entry_price": 19000,
+    "exit_price": 24000,
+    "trade_date": "2025-04-12T00:00:00.000Z",
+    "profit_loss": 400,
+    "notes": "ny longs",
+    "created_at": "2025-04-12T23:25:50.637Z",
+    "updated_at": "2025-04-12T23:25:50.637Z"
+  },
+  {
+    "_id": "1744572149433",
+    "instrument": "XAUUSD",
+    "entry_price": 3237.67,
+    "exit_price": 3100.5,
+    "trade_date": "2025-04-11",
+    "profit_loss": 250,
+    "notes": "shorted ",
+    "created_at": "2025-04-13T19:22:29.433Z",
+    "updated_at": "2025-04-13T19:22:29.433Z"
+  },
+  {
+    "_id": 1744573165941,
+    "instrument": "XAU/USD",
+    "entry_price": 3237.67,
+    "exit_price": 3100.5,
+    "trade_date": "2025-04-10",
+    "profit_loss": 80,
+    "notes": "formatting test",
+    "created_at": "2025-04-13T19:39:25.941Z",
+    "updated_at": "2025-04-13T19:39:25.941Z"
+  },
+  {
+    "_id": 1744575458865,
+    "instrument": "SPX500",
+    "entry_price": 24000,
+    "exit_price": 20000,
+    "trade_date": "2025-04-13",
+    "profit_loss": -700,
+    "notes": "testing",
+    "created_at": "2025-04-13T20:17:38.865Z",
+    "updated_at": "2025-04-13T20:17:38.865Z"
+  },
+  {
+    "_id": 1744577980414,
+    "instrument": "DAX",
+    "entry_price": 40000,
+    "exit_price": 20000,
+    "trade_date": "2025-04-13",
+    "profit_loss": 1000,
+    "notes": "test 2",
+    "created_at": "2025-04-13T20:59:40.414Z",
+    "updated_at": "2025-04-13T20:59:40.414Z"
+  },
+  {
+    "_id": 1744578084706,
+    "instrument": "NIKKEI",
+    "entry_price": 18000,
+    "exit_price": 20000,
+    "trade_date": "2025-04-13",
+    "profit_loss": -50,
+    "notes": "test 3",
+    "created_at": "2025-04-13T21:01:24.706Z",
+    "updated_at": "2025-04-13T21:01:24.706Z"
+  },
+  {
+    "_id": 1744578861063,
+    "instrument": "USDJPY",
+    "entry_price": 1000,
+    "exit_price": 4000,
+    "trade_date": "2025-04-13",
+    "profit_loss": 2500,
+    "notes": "huge swing trade",
+    "created_at": "2025-04-13T21:14:21.063Z",
+    "updated_at": "2025-04-13T21:14:21.063Z"
+  },
+  {
+    "_id": 1744579504479,
+    "instrument": "DAX",
+    "entry_price": 24000,
+    "exit_price": 20000,
+    "trade_date": "2025-04-13",
+    "profit_loss": 1000,
+    "notes": "test",
+    "created_at": "2025-04-13T21:25:04.479Z",
+    "updated_at": "2025-04-13T21:25:04.479Z"
+  },
+  {
+    "_id": 1744579556371,
+    "instrument": "NAS100",
+    "entry_price": 40000,
+    "exit_price": 20000,
+    "trade_date": "2025-04-13",
+    "profit_loss": -50,
+    "notes": "test",
+    "created_at": "2025-04-13T21:25:56.371Z",
+    "updated_at": "2025-04-13T21:25:56.371Z"
+  },
+  {
+    "_id": 1744584391153,
+    "instrument": "NAS100",
+    "entry_price": 24000,
+    "exit_price": 20000,
+    "trade_date": "2025-04-08",
+    "profit_loss": 29,
+    "notes": "testttt",
+    "created_at": "2025-04-13T22:46:31.153Z",
+    "updated_at": "2025-04-13T22:46:31.153Z"
+  },
+  {
+    "_id": 1744584706938,
+    "instrument": "DAX",
+    "entry_price": 3237.67,
+    "exit_price": 3100.5,
+    "trade_date": "2025-04-03",
+    "profit_loss": -150,
+    "notes": "test",
+    "created_at": "2025-04-13T22:51:46.938Z",
+    "updated_at": "2025-04-13T22:51:46.938Z"
+  }
+]
