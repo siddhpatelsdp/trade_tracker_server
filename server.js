@@ -12,7 +12,6 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-// Enhanced Middleware
 app.use(helmet());
 app.use(morgan('dev'));
 app.use(express.json({ limit: '10kb' }));
@@ -26,7 +25,6 @@ app.use(cors({
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Improved Joi validation schema with more flexible number validation
 const tradeSchema = Joi.object({
   instrument: Joi.string().min(2).max(50).required()
     .messages({
@@ -55,7 +53,6 @@ const tradeSchema = Joi.object({
   notes: Joi.string().allow('').max(500).optional()
 });
 
-// Trade data management
 let trades = [];
 const TRADES_FILE = path.join(__dirname, 'trades.json');
 
@@ -109,12 +106,10 @@ const saveTrades = async () => {
   }
 };
 
-// Initialize data
 await loadTrades();
 cleanDuplicateFields();
-await saveTrades(); // Save cleaned version
+await saveTrades();
 
-// API Routes
 app.get('/api/trades', async (req, res) => {
   try {
     res.set({
@@ -151,7 +146,7 @@ app.post('/api/trades', async (req, res) => {
     const { error, value } = tradeSchema.validate(req.body, {
       abortEarly: false,
       allowUnknown: false,
-      convert: false // Disable type conversion to preserve tradeDate string
+      convert: false
     });
 
     if (error) {
@@ -166,9 +161,8 @@ app.post('/api/trades', async (req, res) => {
       });
     }
 
-    const localDate = typeof value.tradeDate === 'string' ? value.tradeDate : String(value.tradeDate); // Use it directly
+    const localDate = typeof value.tradeDate === 'string' ? value.tradeDate : String(value.tradeDate);
 
-    // Create trade with snake_case fields only
     const newTrade = {
       _id: Date.now(),
       instrument: value.instrument,
@@ -198,7 +192,6 @@ app.post('/api/trades', async (req, res) => {
   }
 });
 
-// Enhanced error handling middleware
 app.use((req, res, next) => {
   res.status(404).json({
     status: 'fail',
@@ -218,14 +211,12 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Server startup
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
 });
 
-// Graceful shutdown
 const shutdown = async (signal) => {
   console.log(`\n${signal} received. Shutting down gracefully...`);
   try {
