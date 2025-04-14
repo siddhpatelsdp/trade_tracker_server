@@ -166,7 +166,7 @@ app.post('/api/trades', async (req, res) => {
       });
     }
 
-    const localDate = value.tradeDate; // Use it directly
+    const localDate = typeof value.tradeDate === 'string' ? value.tradeDate : String(value.tradeDate); // Use it directly
 
     // Create trade with snake_case fields only
     const newTrade = {
