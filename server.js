@@ -44,7 +44,7 @@ const tradeSchema = Joi.object({
     Joi.number(),
     Joi.string().pattern(/^[+-]?\d*\.?\d+$/)
   ).required(),
-  tradeDate: Joi.date().iso().required()
+  tradeDate: Joi.string().pattern(/^\d{4}-\d{2}-\d{2}$/).required()
     .messages({
       'date.base': 'Invalid trade date format (use YYYY-MM-DD)'
     }),
