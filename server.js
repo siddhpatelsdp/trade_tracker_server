@@ -166,10 +166,7 @@ app.post('/api/trades', async (req, res) => {
       });
     }
 
-    const getLocalDateString = (dateInput) => {
-      return dateInput;
-    };
-    const cleanTradeDate = getLocalDateString(value.tradeDate);
+    const localDate = value.tradeDate; // Use it directly
 
     // Create trade with snake_case fields only
     const newTrade = {
@@ -177,7 +174,7 @@ app.post('/api/trades', async (req, res) => {
       instrument: value.instrument,
       entry_price: typeof value.entryPrice === 'string' ? parseFloat(value.entryPrice) : value.entryPrice,
       exit_price: typeof value.exitPrice === 'string' ? parseFloat(value.exitPrice) : value.exitPrice,
-      trade_date: cleanTradeDate,
+      trade_date: localDate,
       profit_loss: typeof value.profitLoss === 'string' ? parseFloat(value.profitLoss) : value.profitLoss,
       notes: value.notes || '',
       created_at: new Date().toISOString(),
