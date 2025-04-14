@@ -151,7 +151,7 @@ app.post('/api/trades', async (req, res) => {
     const { error, value } = tradeSchema.validate(req.body, {
       abortEarly: false,
       allowUnknown: false,
-      convert: true // Enable type conversion
+      convert: false // Disable type conversion to preserve tradeDate string
     });
 
     if (error) {
