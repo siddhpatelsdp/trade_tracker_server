@@ -166,9 +166,11 @@ app.post('/api/trades', async (req, res) => {
       });
     }
 
-    const getLocalDateString = (dateInput) => {
-      return dateInput;
-    };
+    const getLocalDateString = (() => {
+      const today = new Date();
+      today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+      return today.toISOString().split('T')[0];
+    })();
     const cleanTradeDate = getLocalDateString(value.tradeDate);
 
     // Create trade with snake_case fields only
