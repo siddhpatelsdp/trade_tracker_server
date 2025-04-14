@@ -167,9 +167,7 @@ app.post('/api/trades', async (req, res) => {
     }
 
     const getLocalDateString = (dateInput) => {
-      const date = new Date(dateInput);
-      date.setMinutes(date.getMinutes() - date.getTimezoneOffset());
-      return date.toISOString().split('T')[0];
+      return new Date(dateInput).toISOString().split('T')[0];
     };
     const cleanTradeDate = getLocalDateString(value.tradeDate);
 
