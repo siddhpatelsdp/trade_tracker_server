@@ -24,6 +24,8 @@ app.use(cors({
   credentials: true
 }));
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Improved Joi validation schema with more flexible number validation
 const tradeSchema = Joi.object({
   instrument: Joi.string().min(2).max(50).required()
