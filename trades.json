@@ -1,16 +1,5 @@
 [
   {
-    "_id": "1744500350637",
-    "instrument": "NAS100",
-    "entry_price": 19000,
-    "exit_price": 24000,
-    "trade_date": "2025-04-12T00:00:00.000Z",
-    "profit_loss": 400,
-    "notes": "ny longs",
-    "created_at": "2025-04-12T23:25:50.637Z",
-    "updated_at": "2025-04-12T23:25:50.637Z"
-  },
-  {
     "_id": "1744572149433",
     "instrument": "XAUUSD",
     "entry_price": 3237.67,
@@ -39,31 +28,20 @@
     "exit_price": 20000,
     "trade_date": "2025-04-13",
     "profit_loss": -700,
-    "notes": "testing",
+    "notes": "testing (EDITED TRADE??)",
     "created_at": "2025-04-13T20:17:38.865Z",
-    "updated_at": "2025-04-13T20:17:38.865Z"
+    "updated_at": "2025-04-19T20:45:28.408Z"
   },
   {
     "_id": 1744577980414,
     "instrument": "DAX",
-    "entry_price": 40000,
+    "entry_price": 30000,
     "exit_price": 20000,
-    "trade_date": "2025-04-13",
+    "trade_date": "2025-04-18",
     "profit_loss": 1000,
-    "notes": "test 2",
+    "notes": "test 2, changed price, date, and notes",
     "created_at": "2025-04-13T20:59:40.414Z",
-    "updated_at": "2025-04-13T20:59:40.414Z"
-  },
-  {
-    "_id": 1744578084706,
-    "instrument": "NIKKEI",
-    "entry_price": 18000,
-    "exit_price": 20000,
-    "trade_date": "2025-04-13",
-    "profit_loss": -50,
-    "notes": "test 3",
-    "created_at": "2025-04-13T21:01:24.706Z",
-    "updated_at": "2025-04-13T21:01:24.706Z"
+    "updated_at": "2025-04-19T21:00:38.285Z"
   },
   {
     "_id": 1744578861063,
@@ -119,5 +97,16 @@
     "notes": "test",
     "created_at": "2025-04-13T22:51:46.938Z",
     "updated_at": "2025-04-13T22:51:46.938Z"
+  },
+  {
+    "_id": "1745102756885",
+    "instrument": "TESTUSD",
+    "entry_price": 24000,
+    "exit_price": 20000,
+    "trade_date": "2025-04-19",
+    "profit_loss": 250,
+    "notes": "testing againnn",
+    "created_at": "2025-04-19T22:45:56.885Z",
+    "updated_at": "2025-04-19T22:46:14.372Z"
   }
 ]

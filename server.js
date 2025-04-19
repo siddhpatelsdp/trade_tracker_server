@@ -123,6 +123,48 @@ await loadTrades();
 cleanDuplicateFields();
 await saveTrades();
 
+// POST — add a new trade
+app.post('/api/trades', async (req, res) => {
+  try {
+    // Validate incoming data
+    const { error, value } = tradeSchema.validate(req.body, {
+      abortEarly: false,
+      allowUnknown: false,
+      convert: false
+    });
+    if (error) {
+      const errors = error.details.map(d => ({
+        field: d.path[0],
+        message: d.message
+      }));
+      return res.status(400).json({ status: 'fail', message: 'Validation failed', errors });
+    }
+
+    // Build new trade object with string _id
+    const newTrade = {
+      _id: Date.now().toString(),
+      instrument: value.instrument,
+      entry_price: parseFloat(value.entryPrice),
+      exit_price: parseFloat(value.exitPrice),
+      trade_date: value.tradeDate,
+      profit_loss: parseFloat(value.profitLoss),
+      notes: value.notes || '',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    };
+
+    // Save to array and file
+    trades.push(newTrade);
+    await saveTrades();
+
+    // Respond with the new trade
+    return res.status(201).json({ status: 'success', data: newTrade });
+  } catch (err) {
+    console.error('POST /api/trades error:', err);
+    res.status(500).json({ status: 'error', message: 'Server error' });
+  }
+});
+
 app.get('/api/trades', async (req, res) => {
   try {
     res.set({
@@ -154,54 +196,82 @@ app.get('/api/trades', async (req, res) => {
   }
 });
 
-app.post('/api/trades', async (req, res) => {
+// GET a single trade by _id
+app.get('/api/trades/:id', async (req, res) => {
   try {
+    const id = req.params.id;
+    const trade = trades.find(t => String(t._id) === id);
+    if (!trade) {
+      return res.status(404).json({ status: 'fail', message: 'Trade not found' });
+    }
+    res.json({
+      _id: trade._id,
+      instrument: trade.instrument,
+      entry_price: trade.entry_price,
+      exit_price: trade.exit_price,
+      trade_date: trade.trade_date,
+      profit_loss: trade.profit_loss,
+      notes: trade.notes,
+      created_at: trade.created_at,
+      updated_at: trade.updated_at
+    });
+  } catch (err) {
+    console.error('GET /api/trades/:id error:', err);
+    res.status(500).json({ status: 'error', message: 'Server error' });
+  }
+});
+
+// PUT update a trade by _id
+app.put('/api/trades/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const index = trades.findIndex(t => String(t._id) === id);
+    if (index === -1) {
+      return res.status(404).json({ status: 'fail', message: 'Trade not found' });
+    }
+    // Validate incoming data
     const { error, value } = tradeSchema.validate(req.body, {
       abortEarly: false,
       allowUnknown: false,
       convert: false
     });
-
     if (error) {
-      const errors = error.details.map(detail => ({
-        field: detail.path[0],
-        message: detail.message
-      }));
-      return res.status(400).json({
-        status: 'fail',
-        message: 'Validation failed',
-        errors
-      });
+      const errors = error.details.map(d => ({ field: d.path[0], message: d.message }));
+      return res.status(400).json({ status: 'fail', message: 'Validation failed', errors });
     }
-
-    const localDate = typeof value.tradeDate === 'string' ? value.tradeDate : String(value.tradeDate);
-
-    const newTrade = {
-      _id: Date.now(),
+    // Update fields
+    trades[index] = {
+      ...trades[index],
       instrument: value.instrument,
       entry_price: typeof value.entryPrice === 'string' ? parseFloat(value.entryPrice) : value.entryPrice,
       exit_price: typeof value.exitPrice === 'string' ? parseFloat(value.exitPrice) : value.exitPrice,
-      trade_date: localDate,
+      trade_date: value.tradeDate,
       profit_loss: typeof value.profitLoss === 'string' ? parseFloat(value.profitLoss) : value.profitLoss,
       notes: value.notes || '',
-      created_at: new Date().toISOString(),
       updated_at: new Date().toISOString()
     };
-
-    trades.push(newTrade);
     await saveTrades();
-
-    res.status(201).json({
-      status: 'success',
-      data: newTrade
-    });
+    res.json({ status: 'success', data: trades[index] });
   } catch (err) {
-    console.error('POST /api/trades error:', err);
-    res.status(500).json({
-      status: 'error',
-      message: 'Failed to create trade',
-      details: process.env.NODE_ENV === 'development' ? err.message : undefined
-    });
+    console.error('PUT /api/trades/:id error:', err);
+    res.status(500).json({ status: 'error', message: 'Server error' });
+  }
+});
+
+// DELETE a trade by _id
+app.delete('/api/trades/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const index = trades.findIndex(t => String(t._id) === id);
+    if (index === -1) {
+      return res.status(404).json({ status: 'fail', message: 'Trade not found' });
+    }
+    const deleted = trades.splice(index, 1)[0];
+    await saveTrades();
+    res.json({ status: 'success', data: deleted });
+  } catch (err) {
+    console.error('DELETE /api/trades/:id error:', err);
+    res.status(500).json({ status: 'error', message: 'Server error' });
   }
 });
 
