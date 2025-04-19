@@ -1,3 +1,6 @@
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
@@ -6,6 +9,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import { readFile, writeFile } from 'fs/promises';
 import Joi from 'joi';
+import Trade from './models/Trade.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,6 +28,15 @@ app.use(cors({
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+const mongoURI = process.env.MONGODB_URI;
+
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+  .then(() => console.log("✅ Connected to MongoDB Atlas"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 const tradeSchema = Joi.object({
   instrument: Joi.string().min(2).max(50).required()
